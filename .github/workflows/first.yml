@@ -25,13 +25,11 @@ jobs:
       - name: install flowise
         run: npm install -g flowise
 
-      - name: fund
-        run: npm config set fund false
-
       - name: install dependencies
         run: npm install
 
+      - name: start server
+        run: npx flowise start
+
       - name: test
-        run: |
-          npx flowise start & npm run load
-          npm test
+        run: npm run load && npm test
