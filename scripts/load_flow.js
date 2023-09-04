@@ -39,16 +39,14 @@ const createFlow = async (name, credentialId) => {
 const testEndpoint = async (endpoint) => {
   console.log(`${baseUrl}/prediction/${endpoint}`);
   try {
-    const response = await axios
-      .post(
-        `${baseUrl}/prediction/${endpoint}`,
-        JSON.stringify({
-          question: 'pozole',
-          history: [],
-          overrideConfig: {},
-        })
-      )
-      .catch((err) => err);
+    const response = await axios.post(
+      `${baseUrl}/prediction/${endpoint}`,
+      JSON.stringify({
+        question: 'pozole',
+        history: [],
+        overrideConfig: {},
+      })
+    );
     return response.status === 200;
   } catch (err) {
     throw err;
@@ -65,4 +63,4 @@ const fullFlow = async (flowName) => {
   return await testEndpoint(flowId);
 };
 
-fullFlow('chatFlow').then(console.log).catch(console.log);
+fullFlow('chatFlow').then(console.log);
