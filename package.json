@@ -5,7 +5,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "load": "PORT=3000 node ./scripts/load_flow.js",
+    "load": "PORT=3000 OPENAI_API_KEY=$OPENAI_API_KEY node ./scripts/load_flow.js",
     "test": "jest"
   },
   "author": "",
