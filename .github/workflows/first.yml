@@ -33,6 +33,6 @@ jobs:
 
       - name: main
         run: npx flowise start &
-          wait-on tcp:3000
-          npm run load
+          wait-on tcp:3000 &&
+          npm run load &&
           npm test
