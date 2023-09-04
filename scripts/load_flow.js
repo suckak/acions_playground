@@ -39,14 +39,11 @@ const createFlow = async (name, credentialId) => {
 const testEndpoint = async (endpoint) => {
   console.log(`${baseUrl}/prediction/${endpoint}`);
   try {
-    const response = await axios.post(
-      `${baseUrl}/prediction/${endpoint}`,
-      JSON.stringify({
-        question: 'pozole',
-        history: [],
-        overrideConfig: {},
-      })
-    );
+    const response = await axios.post(`${baseUrl}/prediction/${endpoint}`, {
+      question: 'pozole',
+      history: [],
+      overrideConfig: {},
+    });
     return response.status === 200;
   } catch (err) {
     throw err;
