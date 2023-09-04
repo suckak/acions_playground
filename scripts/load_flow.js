@@ -1,5 +1,5 @@
-const axios = require("axios");
-const chatFlow = require("./test/flow.json");
+const axios = require('axios');
+const chatFlow = require('../test/flow.json');
 
 // eslint-disable-next-line no-undef
 const PORT = process.env.PORT;
@@ -9,7 +9,7 @@ const openAIApiKey = process.env.OPENAI_APIKEY;
 const createCredential = async (name, apiKey) => {
   const payload = {
     name,
-    credentialName: "openAIApi",
+    credentialName: 'openAIApi',
     plainDataObj: { openAIApiKey: apiKey },
   };
   const { data } = await axios.post(`${baseUrl}/credentials`, payload);
@@ -18,7 +18,7 @@ const createCredential = async (name, apiKey) => {
 
 const createFlow = async (name, credentialId) => {
   const nodes = chatFlow.nodes.map((node) => {
-    if (node.data.type === "ChatOpenAI") {
+    if (node.data.type === 'ChatOpenAI') {
       node.data.credential = credentialId;
     }
     return node;
@@ -44,7 +44,7 @@ const testEndpoint = async (endpoint) => {
     .post(
       `${baseUrl}/prediction/${endpoint}`,
       JSON.stringify({
-        question: "jabon de coco",
+        question: 'jabon de coco',
         history: [],
         overrideConfig: {},
       })
@@ -56,7 +56,7 @@ const testEndpoint = async (endpoint) => {
 
 const fullFlow = async (flowName) => {
   const credentialId = await createCredential(
-    "credential script",
+    'credential script',
     openAIApiKey
   );
   const flowId = await createFlow(flowName, credentialId);
@@ -68,4 +68,4 @@ const fullFlow = async (flowName) => {
 
 //testEndpoint("1a62ba3a-3636-45db-a8f8-6a4055ec6223");
 
-fullFlow("completo").then(console.log).catch(console.log);
+fullFlow('completo').then(console.log).catch(console.log);

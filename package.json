@@ -5,7 +5,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "load": "PORT=3000 OPENAI_APIKEY=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 node load_flow.js",
+    "load": "PORT=3000 OPENAI_APIKEY=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 node /scripts/load_flow.js",
     "test": "jest"
   },
   "author": "",
