@@ -50,7 +50,7 @@ const testEndpoint = async (endpoint) => {
       })
     )
     .catch((err) => err);
-  console.log(response);
+  //console.log(response);
   return response.status === 200;
 };
 
@@ -60,6 +60,7 @@ const fullFlow = async (flowName) => {
     openAIApiKey
   );
   const flowId = await createFlow(flowName, credentialId);
+  console.log(flowId);
   return await testEndpoint(flowId);
 };
 
