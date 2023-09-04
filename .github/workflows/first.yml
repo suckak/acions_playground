@@ -31,6 +31,10 @@ jobs:
       - name: install dependencies
         run: npm install
 
+      - name: Retrieve secret API KEY
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
       - name: main
         run: npx flowise start &
           wait-on tcp:3000 &&

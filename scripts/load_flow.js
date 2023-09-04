@@ -4,7 +4,7 @@ const chatFlow = require('../test/flow.json');
 // eslint-disable-next-line no-undef
 const PORT = process.env.PORT;
 const baseUrl = `http://localhost:${PORT}/api/v1`;
-const openAIApiKey = process.env.OPENAI_APIKEY;
+const openAIApiKey = process.env.OPENAI_API_KEY;
 
 const createCredential = async (name, apiKey) => {
   const payload = {
@@ -64,9 +64,4 @@ const fullFlow = async (flowName) => {
   return await testEndpoint(flowId);
 };
 
-// createCredential("script", "asdfkjhgsdfkhjagsdfkghjasdf");
-// console.log(createFlow("scriptFlow"));
-
-//testEndpoint("1a62ba3a-3636-45db-a8f8-6a4055ec6223");
-
-fullFlow('completo').then(console.log).catch(console.log);
+fullFlow('chatFlow').then(console.log).catch(console.log);
