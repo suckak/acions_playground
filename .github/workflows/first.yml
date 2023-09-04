@@ -25,8 +25,11 @@ jobs:
       - name: install flowise
         run: npm install -g flowise
 
+      - name: install wait-on
+        run: npm install -g wait-on
+
       - name: install dependencies
         run: npm install
 
-      - name: test
-        run: npx flowise start ; npm run load ; npm test
+      - name: wait for server
+        run: npx flowise start & wait-on tcp:3000 ; npm run load ; npm test
